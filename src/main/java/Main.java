@@ -1,7 +1,7 @@
 import client.Client;
 import server.Server;
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         String lesomIdite = "Lesom idite";
         if(args.length != 1) {
             System.out.println(lesomIdite);
