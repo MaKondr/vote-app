@@ -16,9 +16,18 @@ dependencies {
     implementation("io.netty:netty-all:4.1.119.Final")
     // https://mvnrepository.com/artifact/info.picocli/picocli
     implementation("info.picocli:picocli:4.7.6")
+    testImplementation ("junit:junit:4.13.2")
 
 }
 
 tasks.test {
-    useJUnitPlatform()
+    useJUnit()
+}
+
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "Main"
+    }
+    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
